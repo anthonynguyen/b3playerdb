@@ -1,0 +1,333 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
+
+* {
+	border: 0;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	font-size: 13px;
+	height: 100%;
+}
+
+#container, #loginpage {
+	height: 100%;
+	width: 1110px;
+}
+
+#leftbar, #searchresults, #playerinfo {
+	height: 100%;
+}
+
+#leftbar {
+	background: #292f3b url(noise.png);
+	color: #fff;
+	float: left;
+	width: 250px;
+}
+
+#leftbar #logo {
+	color: #f0f0f0;
+	font-family: "Lobster", Georgia, serif;
+	font-size: 36px;
+	text-shadow: 1px 1px 0 black, 2px 2px 0 #0088cc;
+	padding: 40px 25px;
+}
+
+#logo .ver {
+	font-size: 24px;
+}
+
+#searchresults {
+	background: #303030;
+	box-shadow: -30px 0 50px rgba(0,0,0,0.3);
+	color: #fff;
+	float: left;
+	max-height: 100%;
+	overflow: auto;
+	width: 260px;
+}
+
+#searchresults h1 {
+	color: #f0f0f0;
+	font-size: 22px;
+	font-weight: 300;
+	margin: 15px 0;
+	text-align: center;
+	text-shadow: -1px -1px 0 black;
+	text-transform: uppercase;
+}
+
+#searchresults #resultlist {
+	border: 1px solid #222;
+	border-width: 1px 1px 0 1px;
+	list-style-type: none;
+	margin: 0 3px;
+}
+
+#searchresults #resultlist li {
+	background: #ffffff;
+	background: -moz-linear-gradient(top, rgba(255,255,255,0.06), rgba(255,255,255,0.001));
+	background: -o-linear-gradient(top, rgba(255,255,255,0.06), rgba(255,255,255,0.001));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0.06), rgba(255,255,255,0.001));
+	border-bottom: 1px solid #222;
+	border-top: 1px solid #4a4a4a;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	font-size: 11px;
+	padding: 15px;
+	text-shadow: 1px 1px 0 black;
+}
+
+#searchresults #resultlist li:hover {
+	background: -moz-linear-gradient(top, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+	background: -o-linear-gradient(top, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+	cursor: pointer;
+}
+
+#searchresults #resultlist li:active, #searchresults #resultlist li.active {
+	background: -moz-linear-gradient(top, rgba(255,255,255,0.08), rgba(255,255,255,0.16));
+	background: -o-linear-gradient(top, rgba(255,255,255,0.08), rgba(255,255,255,0.16));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0.08), rgba(255,255,255,0.16));
+	box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+
+#searchresults #resultlist li .rlistpid {
+	font-size: 10px;
+	margin-right: 5px;
+}
+
+#playerinfo {
+	float: right;
+	font-family: 'Source Sans Pro', sans-serif;
+	height: 100%;
+	overflow: auto;
+	width: 600px;
+}
+
+#pinfocont {
+	padding: 15px;
+}
+
+#pinfocont h1 {
+	font-size: 32px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+#pinfocont h2 {
+	font-size: 17px;
+	font-weight: 400;
+	margin: 1px 0;
+	text-transform: uppercase;
+}
+
+#pinfocont h2.open {
+	margin-bottom: 0;
+}
+
+#pinfocont h2 a {
+	display: block;
+	padding: 6px 10px;
+}
+
+#pinfocont h2.close a {
+	background: #eee url(plus.png) no-repeat right center;
+	color: inherit;
+	text-shadow: 0 1px 0 #fff;
+}
+
+#pinfocont h2.close a:hover {
+	background: #ddd url(plus.png) no-repeat right center;
+}
+
+#pinfocont h2.open a {
+	background: #111 url(minus.png) no-repeat right center;
+	color: #f6f6f6;
+	text-shadow: 0 1px 0 #000;
+}
+
+#pinfocont div h3 {
+	background-color: #f4f4f4;
+	margin-bottom: 10px;
+	padding: 20px;
+	text-align: center;
+}
+
+#pinfocont table {
+	border: 1px solid #d0d0d0;
+	border-collapse: separate;
+	margin-bottom: 10px;
+	padding: 1px;
+	text-align: left;
+	width: 100%;
+}
+
+#pinfocont table thead {
+	background: -moz-linear-gradient(top, #f7f7f7, #f0f0f0);
+	background: -o-linear-gradient(top, #f7f7f7, #f0f0f0);
+	background: -webkit-linear-gradient(top, #f7f7f7, #f0f0f0);
+}
+
+#pinfocont table td {
+	padding: 4px 8px;
+}
+
+#pinfocont table th {
+	padding: 8px 10px;
+}
+
+#pinfocont table thead {
+	font-size: 13px;
+}
+
+#pinfocont table tbody tr:nth-child(even) {
+	background-color: #f4f4f4;
+}
+
+#pinfocont table tbody tr:hover {
+	background-color: #e0e0e0;
+	cursor: pointer;
+}
+
+#searchform {
+	margin-left: 10px;
+	width: 220px;
+}
+
+#search label.pid, #search label.pname, #search label.plevel {
+	background-color: #eee;
+	border-radius: 3px;
+	color: #000;
+	font-size: 10px;
+	margin-left: 10px;
+	padding: 3px 6px;
+	text-shadow: 1px 1px 0 #ccc;
+	text-transform: uppercase;
+}
+
+#search input[type=text] {
+	background-color: #ddd;
+	border: 1px solid #111;
+	border-radius: 4px;
+	box-shadow: 0 0 3px #333, inset 0 0 7px #555;
+	display: block;
+	padding: 5px 7px;
+	width: 180px;
+}
+
+#pid {
+	margin-bottom: 20px;
+}
+
+#search input[type=checkbox] {
+	margin-right: 5px;
+}
+
+.aliases {
+	margin-bottom: 20px;
+}
+
+#search select {
+	background-color: #eee;
+	border: 1px solid #111;
+	border-radius: 4px;
+	box-shadow: 0 0 3px #333, inset 0 0 7px #555;
+	font-size: 9px;
+	margin-bottom: 20px;
+	padding: 4px 2px;
+}
+
+#search input:focus {
+	background-color: #f0f0f0;
+	border: 1px solid #bf6767;
+}
+
+#search input[type=submit], #search input[type=reset], #login input[type=submit] {
+	border-radius: 3px;
+	border-top: 1px solid rgba(255,255,255,0.4);
+	box-shadow: 0 0 4px #111;
+	color: #fff;
+	font-size: 10px;
+	padding: 6px 0;
+	text-transform: uppercase;
+	width: 90px;
+}
+
+#search input[type=submit], #login input[type=submit] {
+	background: -moz-linear-gradient(top, #66bbcc, #5aa5b5);
+	background: -o-linear-gradient(top, #66bbcc, #5aa5b5);
+	background: -webkit-linear-gradient(top, #66bbcc, #5aa5b5);
+	float: right;
+}
+
+#search input[type=submit]:active, #login input[type=submit]:active {
+	background: -moz-linear-gradient(top, #5aa5b5, #66bbcc);
+	background: -o-linear-gradient(top, #5aa5b5, #66bbcc);
+	background: -webkit-linear-gradient(top, #5aa5b5, #66bbcc);
+}
+
+#search input[type=reset] {
+	background: -moz-linear-gradient(top, #cc6666, #b75b5b);
+	background: -o-linear-gradient(top, #cc6666, #b75b5b);
+	background: -webkit-linear-gradient(top, #cc6666, #b75b5b);
+	float: left;
+}
+
+#search input[type=reset]:active {
+	background: -moz-linear-gradient(top, #cc6666, #b75b5b);
+	background: -o-linear-gradient(top, #cc6666, #b75b5b);
+	background: -webkit-linear-gradient(top, #cc6666, #b75b5b);
+}
+
+#loginpage {
+	background: #292f3b url(noise.png);
+	width: 100%;
+}
+
+#login {
+	display: block;
+	height: 120px;
+	left: 50%;
+	margin-left: -135px;
+	margin-top: -60px;
+	position: absolute;
+	top: 50%;
+	width: 270px;
+}
+
+#login input[type=password] {
+	border: 1px solid #111;
+	border-radius: 4px;
+	box-shadow: 0 0 3px #333, inset 0 0 7px #555;
+	padding: 5px 7px;
+	width: 250px;
+}
+
+#login input[type=submit] {
+	display: block;
+	float: left;
+	margin: 15px auto 0 75px;
+	text-align: center;
+	width: 100px;
+}
+
+#pwincorrect {
+	color: #ff8080;
+	margin-bottom: 12px;
+	text-align: center;
+}
