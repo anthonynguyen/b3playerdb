@@ -214,7 +214,7 @@ body {
 	width: 220px;
 }
 
-#search label.pid, #search label.pname, #search label.plevel {
+#search label {
 	background-color: #eee;
 	border-radius: 3px;
 	color: #000;
@@ -233,6 +233,10 @@ body {
 	display: block;
 	padding: 5px 7px;
 	width: 180px;
+}
+
+#search input[type=checkbox] {
+	font-size: 7px;
 }
 
 #pid {
