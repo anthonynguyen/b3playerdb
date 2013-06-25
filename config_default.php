@@ -1,5 +1,5 @@
 <?php
-define("SERVER_BANLIST", "/path/to/banlist.txt")
+define("SERVER_BANLIST", "/path/to/banlist.txt");
 
 define("MYSQL_HOST", "host.of.mysql.db");
 define("MYSQL_USER", "mysql_user");
