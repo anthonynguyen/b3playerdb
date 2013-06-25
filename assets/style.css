@@ -33,10 +33,15 @@ body {
 }
 
 #leftbar {
-	background: #292f3b url(noise.png);
+	background: #303030;
 	color: #fff;
 	float: left;
 	width: 250px;
+}
+
+#userinfo {
+	background: #393939;
+	padding: 10px;
 }
 
 #leftbar #logo {
@@ -44,7 +49,7 @@ body {
 	font-family: "Lobster", Georgia, serif;
 	font-size: 36px;
 	text-shadow: 1px 1px 0 black, 2px 2px 0 #0088cc;
-	padding: 40px 25px;
+	padding: 5px 25px 20px 25px;
 }
 
 #logo .ver {
@@ -257,7 +262,7 @@ body {
 	border: 1px solid #bf6767;
 }
 
-#search input[type=submit], #search input[type=reset], #login input[type=submit] {
+#search input[type=submit], #search input[type=reset], #login input[type=submit], .banbutt {
 	border-radius: 3px;
 	border-top: 1px solid rgba(255,255,255,0.4);
 	box-shadow: 0 0 4px #111;
@@ -266,6 +271,32 @@ body {
 	padding: 6px 0;
 	text-transform: uppercase;
 	width: 90px;
+}
+
+.banbutt {
+	cursor: pointer;
+	display: inline;
+	font-size: 12px;
+	padding: 6px 15px;
+}
+
+#tempbanbutt {
+	background: -moz-linear-gradient(top, #66bbcc, #5aa5b5);
+	background: -o-linear-gradient(top, #66bbcc, #5aa5b5);
+	background: -webkit-linear-gradient(top, #66bbcc, #5aa5b5);
+}
+
+#permbanbutt {
+	background: -moz-linear-gradient(top, #cc6666, #b75b5b);
+	background: -o-linear-gradient(top, #cc6666, #b75b5b);
+	background: -webkit-linear-gradient(top, #cc6666, #b75b5b);
+	margin-right: 20px;
+}
+
+#unbanbutt {
+	background: -moz-linear-gradient(top, #88cc66, #78b55a);
+	background: -o-linear-gradient(top, #88cc66, #78b55a);
+	background: -webkit-linear-gradient(top, #88cc66, #78b55a);
 }
 
 #search input[type=submit], #login input[type=submit] {
@@ -310,7 +341,7 @@ body {
 	width: 270px;
 }
 
-#login input[type=password] {
+#login input[type=password], #login input[type=text] {
 	border: 1px solid #111;
 	border-radius: 4px;
 	box-shadow: 0 0 3px #333, inset 0 0 7px #555;
@@ -330,4 +361,20 @@ body {
 	color: #ff8080;
 	margin-bottom: 12px;
 	text-align: center;
+}
+
+.banned {
+	color: red;
+}
+
+#pbdiag, #tbdiag, #ubdiag {
+	font-size: 0.7em;
+}
+
+#pbform input, #pbform select {
+	padding: 5px;
+}
+
+#pbform label {
+	font-size: 1.5em;
 }
