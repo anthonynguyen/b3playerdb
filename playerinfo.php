@@ -7,12 +7,32 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		$result = mysql_query("SELECT * FROM `clients` WHERE `id`=".$_GET["id"]);
 		$client = mysql_fetch_assoc($result);
 
+		$banned = false;
+		$q = mysql_query("SELECT * FROM  `penalties` WHERE  `type` IN ('Ban',  'TempBan') AND `client_id` =". strval($client["id"]) . ";");
+		while ($p = mysql_fetch_assoc($q)) {
+			if ($p["type"] == "Ban" && $p["inactive"] == 0) {
+				$banned = true;
+				break;
+			} elseif ($p["type"] == "TempBan" && $p["inactive"] == 0 && $p["time_expire"] > time()) {
+				$banned = true;
+				break;
+			}
+		}
+
 		$result = mysql_query("SELECT `name` FROM `groups` WHERE `id`=".$client["group_bits"]);
 		$levelstr = mysql_fetch_assoc($result);
 		$levelstr = $levelstr["name"];
 
-		echo("<h1>${client['name']} (@${client['id']})</h1>");
-
+		if ($banned == true) {
+			echo("<h1>${client['name']} (@${client['id']}) - <span class=\"banned\">BANNED</span></h1>");
+			if ($_SESSION["is_admin"]) {echo("<a href=\"#ubdiag\" class=\"banbutt\" id=\"unbanbutt\">Unban</a><br /><br />");}
+		} else {
+			echo("<h1>${client['name']} (@${client['id']})</h1>");
+			if ($_SESSION["is_admin"]) {echo("<a href=\"#pbdiag\" class=\"banbutt\" id=\"permbanbutt\">Permban</a><a href=\"#tbdiag\" class=\"banbutt\" id=\"tempbanbutt\" href=\"#\">Tempban</a><br /><br />");}
+		}
+		
+		echo("<div id=\"player_id\" style=\"display:none\">" . $client["id"] . "</div>");
+		echo("<div id=\"player_name\" style=\"display:none\">" . $client["name"] . "</div>");
 		echo("<div id=\"infodiv\"><h2>Player Info</h2>");
 		echo("<table cellspacing=\"0\" id=\"infotable\"><tbody>");
 

@@ -1,10 +1,10 @@
 <?php
-define("PLAYERDB_PASSWORD", "");
+define("SERVER_BANLIST", "/path/to/banlist.txt")
 
-define("MYSQL_HOST", "");
-define("MYSQL_USER", "");
-define("MYSQL_PASSWORD", "");
-define("MYSQL_DBNAME", "");
+define("MYSQL_HOST", "host.of.mysql.db");
+define("MYSQL_USER", "mysql_user");
+define("MYSQL_PASSWORD", "mysq_password");
+define("MYSQL_DBNAME", "b3_database_name");
 
 $conn = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD);
 
