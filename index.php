@@ -77,12 +77,12 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 			<div id="logo">b3 player db<div class="ver">v2.0</div></div>
 			<div id="searchform">
 				<form id="search" method="post">
-					<label class="pid" for="pid">Player ID</label>
+					<label for="pid">Player ID</label>
 					<input type="text" id="pid" name="id" autofocus />
-					<label class="pname" for="pname">Player Name</label>
+					<label for="pname">Player Name</label>
 					<input type="text" id="pname" name="name" />
 					<div class="aliases"><label id="aliasesl"><input type="checkbox" id="aliases" name="aliases" value="yes" />Include aliases?</label></div>
-					<label class="plevel">Level</label><br />
+					<label>Level</label><br />
 					<select name="lvlop">
 						<option value="eqlt">Equal to or lower than</option>
 						<option value="lt">Lower than</option>
@@ -100,6 +100,10 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 						<option value="64">Senior Admin</option>
 						<option value="128">Super Admin</option>
 					</select>
+					<label for="bans">Ban Status</label><br />
+					<input type="radio" name="banstatus" value="1">Has past or active bans</input><br />
+					<input type="radio" name="banstatus" value="2">Has no past or active bans</input><br />
+					<input type="radio" name="banstatus" value="3" checked>Doesn't matter</input><br /><br />
 					<input type="reset" value="Reset" /><input type="submit" value="Submit" />
 				</form>
 			</div>
@@ -110,7 +114,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 			<ul id="resultlist">
 			</ul>
 		</div>
-
 		<div id="playerinfo">
 			<div id="pinfocont">
 			</div>

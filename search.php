@@ -66,6 +66,15 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		}
 	}
 
+	$beenbanned = true;
+	$notbanned = true;
+	if (isset($_GET["banstatus"]) && $_GET["banstatus"] == "1") {
+		$notbanned = false;
+	} else if (isset($_GET["banstatus"]) && $_GET["banstatus"] == "2") {
+		$beenbanned = false;
+	}
+
+
 	$query = "SELECT * FROM `clients` WHERE " . implode(" AND ", $qparts) . " ORDER BY `id` ASC";
 	$result = mysql_query($query);
 	$numrows = mysql_num_rows($result);
@@ -82,8 +91,10 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		foreach ($mplyrs as $plyr) {
 			if (!in_array($plyr["id"], $ids)) {
 				$banned = false;
+				$pbeenbanned = false;
 				$q = mysql_query("SELECT * FROM  `penalties` WHERE  `type` IN ('Ban',  'TempBan') AND `client_id` =". strval($plyr["id"]) . ";");
 				while ($p = mysql_fetch_assoc($q)) {
+					$pbeenbanned = true;
 					if ($p["type"] == "Ban" && $p["inactive"] == 0) {
 						$banned = true;
 						break;
@@ -92,12 +103,15 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 						break;
 					}
 				}
-				if ($banned == true) {
-					echo("<li><span class=\"rlistpid\">(@" . $plyr["id"] . ")</span>" . $plyr["name"] . " - <span class=\"banned\">BANNED</span></li>");
-				} else {
-					echo("<li><span class=\"rlistpid\">(@" . $plyr["id"] . ")</span>" . $plyr["name"] . "</li>");
+
+				if (($beenbanned && $pbeenbanned) || ($notbanned && !$pbeenbanned)) {
+					if ($banned == true) {
+						echo("<li><span class=\"rlistpid\">(@" . $plyr["id"] . ")</span>" . $plyr["name"] . " - <span class=\"banned\">BANNED</span></li>");
+					} else {
+						echo("<li><span class=\"rlistpid\">(@" . $plyr["id"] . ")</span>" . $plyr["name"] . "</li>");
+					}
 				}
-				
+
 				$ids[] = $plyr["id"];
 			}
 		}
