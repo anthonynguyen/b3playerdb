@@ -108,7 +108,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		<div id="searchresults">
 			<h1>Search Results</h1>
 			<ul id="resultlist">
-				<li><span class="rlistpid">(@4505)</span>|DB|Clear</li>
 			</ul>
 		</div>
 
