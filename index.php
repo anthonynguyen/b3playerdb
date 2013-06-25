@@ -9,10 +9,12 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 <head>
 	<title>B3 Player DB</title>
 	<link rel="stylesheet" href="assets/style.css" />
-	<script type="text/javascript" src="assets/jquery-1.8.1.min.js"></script>
+	<link rel="stylesheet" href="assets/jquery.fancybox.css" />
+	<script type="text/javascript" src="assets/jquery-2.0.2.min.js"></script>
 	<script type="text/javascript" src="assets/jquery.collapse.js"></script>
 	<script type="text/javascript" src="assets/jquery.collapse_storage.js"></script>
 	<script type="text/javascript" src="assets/jquery.collapse_cookie_storage.js"></script>
+	<script type="text/javascript" src="assets/jquery.fancybox.js"></script>
 	<script>
 	$(document).ready(function() {
 		window.lastli = $(document);
@@ -23,6 +25,9 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 			$.get("playerinfo.php", {id: $(".rlistpid", this).text().slice(2, -1)}, function(data) {
 				$("#pinfocont").html(data);
 				$("#pinfocont div").collapse({persist: true});
+				$(".banbutt").fancybox({autoSize: false, width: 500, height: 300});
+				document.uid = $("#player_id").html();
+				document.uname = $("#player_name").html();
 			});
 		});
 
@@ -33,17 +38,47 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 				$("#searchresults h1").text("Search Results ("+$("#resultlist li").length+")");
 			});
 		});
+
+		$(document).on("click", "#permbanbutt", function(e) {
+			e.preventDefault();
+			$("#pbdiag h1").html("Permbanning " + document.uname + " (@" + document.uid + ")");
+		});
 	});
 	</script>
 </head>
 <body>
+	<div id="pbdiag" style="display:none">
+		<h1></h1>
+		<form id="pbform">
+			<label for="length">Length:</label><br />
+			<input type="number" name="length">
+			<select name="unit">
+				<option value="minutes">Minutes</option>
+				<option value="hours">Hours</option>
+				<option value="days">Days</option>
+				<option value="weeks">Weeks</option>
+				<option value="months">Months</option>
+				<option value="years">Years</option>
+			</select><br /><br />
+			<label for="reason">Reason (link to forum post if possible):</label><br />
+			<input type="text" name="reason" placeholder="Reason" /><br /><br />
+			<input type="submit" name="go" value="Ban!" />
+		</form>
+	</div>
+	<div id="ubdiag" style="display:none">
+		asdasd
+	</div>
+	<div id="tbdiag" style="display:none">
+		asdasd
+	</div>
 	<div id="container">
 		<div id="leftbar">
-			<div id="logo">b3 player db<div class="ver">v1.0</div></div>
+			<div id="userinfo">Hello, <?php echo($_SESSION["username"]); if($_SESSION["is_admin"]) {echo(" - [A]");} ?></div>
+			<div id="logo">b3 player db<div class="ver">v2.0</div></div>
 			<div id="searchform">
 				<form id="search" method="post">
 					<label class="pid" for="pid">Player ID</label>
-					<input type="text" id="pid" name="id" />
+					<input type="text" id="pid" name="id" autofocus />
 					<label class="pname" for="pname">Player Name</label>
 					<input type="text" id="pname" name="name" />
 					<div class="aliases"><label id="aliasesl"><input type="checkbox" id="aliases" name="aliases" value="yes" />Include aliases?</label></div>
@@ -73,6 +108,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		<div id="searchresults">
 			<h1>Search Results</h1>
 			<ul id="resultlist">
+				<li><span class="rlistpid">(@4505)</span>|DB|Clear</li>
 			</ul>
 		</div>
 
